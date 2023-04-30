@@ -10,6 +10,7 @@ packages = [{include = "bridges_alpha_api"}]
 python = "^3.8"
 fastapi = "^0.95.1"
 uvicorn = {extras = ["standard"], version = "^0.22.0"}
+supabase = "^1.0.3"
 
 
 [build-system]

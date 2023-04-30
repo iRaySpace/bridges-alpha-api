@@ -8,5 +8,5 @@ class Message(BaseModel):
 # TODO: add date
 class Transaction(BaseModel):
     amount: int
-    source_uuid: str = Field(alias='sourceUuid')
-    destination_uuid: str = Field(alias='destinationUuid')
+    source_name: str = Field(alias='sourceName')
+    destination_name: str = Field(alias='destinationName')
