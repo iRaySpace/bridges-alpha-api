@@ -18,4 +18,3 @@ def create(transaction: Transaction) -> None:
         )
         .execute()
     )
-    print(data)
