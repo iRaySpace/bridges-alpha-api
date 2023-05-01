@@ -15,3 +15,12 @@ class Transaction(BaseModel):
 class Signup(BaseModel):
     email: str
     password: str
+
+
+class BalanceRequest(BaseModel):
+    name: str
+
+
+class Balance(BaseModel):
+    name: str
+    amount: int

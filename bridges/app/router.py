@@ -1,6 +1,6 @@
 from fastapi.routing import APIRouter
-from bridges.app.schema import Message, Transaction, Signup
-from bridges.data.transaction_repository import create
+from bridges.app.schema import Message, Transaction, Signup, BalanceRequest, Balance
+from bridges.data.transaction_repository import create, get_balance
 from bridges.data.auth_repository import signup_with_email
 
 api_router = APIRouter()
@@ -20,3 +20,8 @@ async def process_transaction(transaction: Transaction) -> None:
 @api_router.post('/signup')
 async def process_signup(signup: Signup):
     return signup_with_email(signup)
+
+
+@api_router.post('/balance')
+async def process_balance(balance_request: BalanceRequest) -> Balance:
+    return get_balance(balance_request)
