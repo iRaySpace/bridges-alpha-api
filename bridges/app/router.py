@@ -1,27 +1,16 @@
 from fastapi.routing import APIRouter
-from bridges.app.schema import Message, Transaction, Signup, BalanceRequest, Balance
-from bridges.data.transaction_repository import create, get_balance
-from bridges.data.auth_repository import signup_with_email
+from bridges.domain.entity import AccountCreate, Account, Transaction
+from bridges.data import account_repository, transaction_repository
 
 api_router = APIRouter()
 
 
-@api_router.post('/', response_model=Message)
-async def send_echo_message(incoming_message: Message) -> Message:
-    return incoming_message
-
-
 @api_router.post('/transaction')
-async def process_transaction(transaction: Transaction) -> None:
-    create(transaction)
-    return None
+async def process_transaction(transaction: Transaction) -> Transaction:
+    return transaction_repository.create(transaction)
 
 
-@api_router.post('/signup')
-async def process_signup(signup: Signup):
-    return signup_with_email(signup)
-
-
-@api_router.post('/balance')
-async def process_balance(balance_request: BalanceRequest) -> Balance:
-    return get_balance(balance_request)
+@api_router.post('/account')
+async def process_account(account: AccountCreate) -> Account:
+    return account_repository.create(account)
+ 
