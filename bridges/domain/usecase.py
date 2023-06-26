@@ -1,4 +1,4 @@
-from bridges.domain.dto import TransactionCreate, AccountCreate
+from bridges.domain.dto import TransactionCreate, AccountCreate, AccountLogin
 from bridges.data import transaction_repository, account_repository
 
 
@@ -29,3 +29,10 @@ def create_account(account: AccountCreate):
     if existing_account:
         raise Exception('Account already exist.')
     return account_repository.create(account)
+
+
+def login(data: AccountLogin):
+    existing_account = account_repository.get(data.phone_no)
+    if not existing_account:
+        raise Exception('Unable to login, please check your phone number and pin number.')
+    return account_repository.login(data)

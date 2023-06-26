@@ -10,3 +10,12 @@ class TransactionCreate(BaseModel):
 
 class AccountCreate(BaseModel):
     phone_no: str = Field(alias='phoneNo')
+
+
+class AccountLogin(BaseModel):
+    phone_no: str = Field(alias='phoneNo')
+    pin_no: str = Field(alias='pinNo')
+
+
+class AccountToken(BaseModel):
+    access_token: str
