@@ -12,6 +12,8 @@ fastapi = "^0.95.1"
 uvicorn = {extras = ["standard"], version = "^0.22.0"}
 supabase = "^1.0.3"
 uuid = "^1.30"
+python-ulid = "^1.1.0"
+pytz = "^2023.3"
 
 
 [build-system]

@@ -3,10 +3,10 @@ from pydantic import BaseModel, Field
 
 class TransactionCreate(BaseModel):
     amount: int
-    source_no: str = Field(alias='sourceNo')
-    destination_no: str = Field(alias='destinationNo')
+    sender_no: str = Field(alias='senderNo')
+    receiver_no: str = Field(alias='receiverNo')
+    notes: str
 
 
 class AccountCreate(BaseModel):
-    email: str
-    password: str
+    phone_no: str = Field(alias='phoneNo')

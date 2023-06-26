@@ -6,12 +6,11 @@ from datetime import datetime
 class Transaction(BaseModel):
     id: str
     created_at: datetime = Field(alias='createdAt')
-    source_no: str = Field(alias='sourceNo')
-    destination_no: str = Field(alias='destinationNo')
-    amount: int
+    sender_no: str = Field(alias='senderNo')
+    receiver_no: str = Field(alias='receiverNo')
+    notes: str
 
 
 class Account(BaseModel):
-    email: str
-    password: str
-    account_no: str = Field(alias='accountNo')
+    phone_no: str = Field(alias='phoneNo')
+    created_at: datetime = Field(alias='createdAt')
