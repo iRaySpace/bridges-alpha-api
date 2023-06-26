@@ -20,8 +20,8 @@ def create_transaction(transaction: TransactionCreate):
     return transaction_repository.create(transaction)
 
 
-def get_transactions():
-    return transaction_repository.get()
+def get_transactions(sender_no: str = None):
+    return transaction_repository.get(sender_no)
 
 
 def create_account(account: AccountCreate):
@@ -36,3 +36,15 @@ def login(data: AccountLogin):
     if not existing_account:
         raise Exception('Unable to login, please check your phone number and pin number.')
     return account_repository.login(data)
+
+
+def process_token(token: str):
+    decoded_token = account_repository.verify_token(token)
+    if not decoded_token:
+        raise Exception('Token is invalid.')
+
+    existing_account = account_repository.get(decoded_token.get('sub'))
+    if not existing_account:
+        raise Exception('Account does not exist.')
+
+    return existing_account

@@ -22,7 +22,7 @@ def create(account: AccountCreate) -> Account:
 
 def get(phone_no: str) -> Account:
     existing_account = [x for x in data if x.get('phoneNo') == phone_no]
-    return existing_account[0] if existing_account else None
+    return Account(**existing_account[0]) if existing_account else None
 
 
 # TODO: not the right place
@@ -40,3 +40,15 @@ def login(data: AccountLogin, expires_in=300):
             get_settings().algorithm,
         ),
     )
+
+
+def verify_token(token: str) -> str:
+    try:
+        decoded_token = jwt.decode(
+            token,
+            get_settings().secret_key,
+            get_settings().algorithm,
+        )
+        return decoded_token if decoded_token.get('exp') >= int(time.time()) else None
+    except:
+        return None

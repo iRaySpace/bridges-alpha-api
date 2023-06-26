@@ -19,7 +19,6 @@ def create(transaction: TransactionCreate):
 
 
 def get(sender_no: str = None):
-    exsiting_data = data
     if sender_no:
-        existing_data = [x for x in existing_data if x.get('senderNo') == sender_no]
-    return existing_data
+        return [x for x in data if x.get('senderNo') == sender_no]
+    return data
