@@ -1,6 +1,6 @@
 from fastapi.routing import APIRouter
-from bridges.domain.dto import TransactionCreate
-from bridges.domain.entity import AccountCreate, Account, Transaction
+from bridges.domain.dto import TransactionCreate, AccountCreate
+from bridges.domain.entity import Account, Transaction
 from bridges.data import account_repository
 from bridges.domain import usecase
 

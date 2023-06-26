@@ -15,8 +15,3 @@ class Account(BaseModel):
     email: str
     password: str
     account_no: str = Field(alias='accountNo')
-
-
-class AccountCreate(BaseModel):
-    email: str
-    password: str

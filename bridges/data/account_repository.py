@@ -1,5 +1,6 @@
 from random import randint
-from bridges.domain.entity import AccountCreate, Account
+from bridges.domain.entity import Account
+from bridges.domain.dto import AccountCreate
 
 data = []
 
